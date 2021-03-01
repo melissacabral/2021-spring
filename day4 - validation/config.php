@@ -9,11 +9,6 @@
 define('DEBUG_MODE', true);
 define('ROOT_DIR', '' );
 
-//future login examples will use a database for this
-define('CORRECT_USER', 'melissa');
-define('CORRECT_PASSWORD', 'phprules');
-
-
 
 /* -------------------------stop editing------------------------ */
 
