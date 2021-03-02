@@ -1,0 +1,70 @@
+<?php 
+//Snippets to add to your contact form
+
+/**
+ * block 1: load assets and import classes
+ * put these lines near the top, before the parser
+ */
+
+
+// Include the PHPMailer library
+require('vendor/PHPMailer/src/Exception.php');
+require('vendor/PHPMailer/src/PHPMailer.php');
+require('vendor/PHPMailer/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+
+/**
+ * Block 2: instantiate the mailer
+ * put this right before if($valid)
+ */
+
+$mailer = new PHPMailer(true);
+
+/**
+ * Block 3: configure and send the mail
+ * This goes inside the if($valid){} block
+ */
+
+try{
+	// Set up to, from, and the message body.  The body doesn't have to be HTML; check the PHPMailer documentation for details.
+	$mailer->Sender = $email;
+	$mailer->AddReplyTo($email, $name);
+	$mailer->SetFrom($email, $name);
+	$mailer->AddAddress('mcabral@platt.edu');
+	$mailer->Subject = 'A guest has sent you a message';
+	$mailer->MsgHTML("<p>$message</p>");
+
+	// Set up our connection information.
+	$mailer->IsSMTP();
+	//show report when done
+	$mailer->SMTPDebug = $debug_mode; 
+	$mailer->SMTPAuth = true;
+	$mailer->SMTPSecure = 'ssl';
+	$mailer->Port = 465;
+	$mailer->Host = 'smtp.gmail.com';
+	//Username to use for SMTP authentication - use full email address for gmail
+	$mailer->Username = 'recipientemail@gmail.com';
+
+	//Your gmail account password goes here
+	$mailer->Password = '*******';
+
+	// All done! send the mail and make sure it worked
+	if( $mailer->Send() ){
+		//success
+		$feedback = 'Thank you for contacting me.';
+		$feedback_class = 'success';
+	}
+}
+catch(phpmailerException $e){
+	/*phpmailer exception*/
+	$feedback = 'Sorry, the server could not send your message at this time.';
+	$feedback_class = 'error';
+	$errors[] =  $e->errorMessage();
+}
+catch(Exception $e) {
+	$feedback = 'The mail could not send';
+	$feedback_class = 'error';
+	$errors[] = $e->getMessage(); 
+}
