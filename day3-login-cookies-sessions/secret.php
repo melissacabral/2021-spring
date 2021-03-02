@@ -22,7 +22,6 @@ if(  ! isset($_SESSION['isloggedin']) OR ! $_SESSION['isloggedin'] ){
 
 	<a href="login.php?action=logout">Log Out</a>
 
-another change
 <?php 
 if( DEBUG_MODE ){
 	echo '<h3>DEBUG MODE IS ON</h3>';

@@ -96,7 +96,6 @@ if( isset($_POST['username']) ){
 		</form>
 	</div>
 
-	this is a change I made
 
 
 <?php 
