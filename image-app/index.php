@@ -18,7 +18,8 @@
 		<?php //get all the published posts (write it)
 		$result = $DB->prepare('SELECT image, title, body, date
 								FROM posts
-								WHERE is_published = 1');
+								WHERE is_published = 1
+								ORDER BY date DESC');
 		//run it
 		$result->execute();
 		//check it - did it find at least one row?
@@ -41,7 +42,9 @@
 		?>
 
 	</main>
-	<aside class="sidebar"></aside>
+	
+	<?php include('includes/sidebar.php'); ?>
+
 	<footer class="footer"></footer>
 </div>
 </body>
