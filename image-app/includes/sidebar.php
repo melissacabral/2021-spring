@@ -21,8 +21,12 @@
 	<?php } //end if users found ?>
 
 
-	<?php //get up to 10 categories, alphabetical by name 
-	$result = $DB->prepare('SELECT name FROM categories ORDER BY name ASC');
+	<?php //get up to 10 categories with post counts 
+	$result = $DB->prepare('SELECT categories.name, COUNT(*) AS total
+							FROM categories, posts
+							WHERE categories.category_id = posts.category_id
+							GROUP BY posts.category_id
+							LIMIT 10');
 	$result->execute();
 	if( $result->rowCount() >= 1 ){
 	?>
@@ -30,7 +34,7 @@
 		<h2>Categories</h2>
 		<ul>
 		<?php while( $row = $result->fetch() ){ ?>		
-			<li><?php echo $row['name']; ?></li>		
+			<li><?php echo $row['name']; ?> (<?php echo $row['total']; ?>)</li>		
 		<?php } ?>
 		</ul>
 	</section>
@@ -53,5 +57,32 @@
 	</section>
 	<?php  } //end if tags ?>
 
+
+
+	<?php //get up to 5 recent comments, with the title of the post they are on and the name of the commenter. newest comment first
+	$result = $DB->prepare('SELECT posts.title, users.username
+							FROM comments, posts, users
+							WHERE posts.post_id = comments.post_id
+							AND users.user_id = comments.user_id
+							AND comments.is_approved = 1
+							ORDER BY comments.date DESC
+							LIMIT 5');
+	$result->execute(); 
+	if( $result->rowCount() >= 1 ){ ?>
+	<section class="recent-comments">
+		<h2>Recent Comments</h2>
+
+		<ul>
+			<?php while( $row = $result->fetch() ){ ?>
+			<li>
+				<?php echo $row['username']; ?> 
+				commented on 
+				<?php echo $row['title']; ?>
+			</li>
+			<?php } //end while ?>
+		</ul>
+
+	</section>
+	<?php } //end if there are comments ?>
 
 </aside>
