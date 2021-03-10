@@ -31,6 +31,31 @@ function count_comments( $id ){
 	}
 }
 
+/**
+ * Display feedback for any form
+ * @param string $feedback the heading of the error message
+ * @param string $feedback_class 'success' or 'error' class for styling
+ * @param array $errors the list of bullets to show
+ */
+function display_feedback( $feedback = '', $feedback_class = 'error', $errors = array() ){
+	if( isset( $feedback ) AND $feedback != '' ){
+	?>
+		<div class="feedback <?php echo $feedback_class; ?>">
+			<h2><?php echo $feedback; ?></h2>
+
+			<?php if( ! empty( $errors ) ){ ?>
+				<ul>
+					<?php foreach( $errors as $error ){ ?>
+						<li><?php echo $error; ?></li>
+					<?php } ?>
+				</ul>
+			<?php } ?>
+
+		</div>			
+	<?php 
+	}//endif feedback exists
+}
+
 
 
 

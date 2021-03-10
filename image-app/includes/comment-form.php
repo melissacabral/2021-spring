@@ -1,7 +1,9 @@
-<section class="comment-form">
+<section class="comment-form" id="respond">
 	<h2>Leave a Comment</h2>
 
-	<form action="single.php?post_id=<?php echo $post_id; ?>" method="post">
+	<?php display_feedback($feedback, $feedback_class, $errors); ?>
+	
+	<form action="single.php?post_id=<?php echo $post_id; ?>#respond" method="post">
 		<label>Your Comment:</label>
 		<textarea name="body"></textarea>
 

@@ -1,14 +1,18 @@
 <?php 
 require('config.php');
 require_once( FILE_ROOT . '/includes/functions.php' ); 
-require( FILE_ROOT . '/includes/header.php' );
 
-//sanitize - get the ID of the post out of the URL - single.php?post_id=X
 $post_id = filter_var( $_GET['post_id'], FILTER_SANITIZE_NUMBER_INT );
 //validate - make sure it's not empty
 if($post_id == ''){
 	$post_id = 0;
 }
+
+require( FILE_ROOT . '/includes/comment-parse.php');
+require( FILE_ROOT . '/includes/header.php' );
+//sanitize - get the ID of the post out of the URL - single.php?post_id=X
+
+
 ?>
 <main class="content">
 	<?php //get the published post that we're trying to show,  (get author and category info as well)
