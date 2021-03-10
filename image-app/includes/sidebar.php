@@ -14,6 +14,7 @@
 			<?php while( $row = $result->fetch() ){ ?>
 			<li class="user">
 				<img src="<?php echo $row['profile_pic']; ?>" alt="<?php echo $row['username']; ?>" width="50" height="50">
+				<?php echo $row['username']; ?>
 			</li>
 			<?php } ?>
 		</ul>
@@ -22,7 +23,7 @@
 
 
 	<?php //get up to 10 categories with post counts 
-	$result = $DB->prepare('SELECT categories.name, COUNT(*) AS total
+	$result = $DB->prepare('SELECT categories.*, COUNT(*) AS total
 							FROM categories, posts
 							WHERE categories.category_id = posts.category_id
 							GROUP BY posts.category_id
@@ -34,7 +35,11 @@
 		<h2>Categories</h2>
 		<ul>
 		<?php while( $row = $result->fetch() ){ ?>		
-			<li><?php echo $row['name']; ?> (<?php echo $row['total']; ?>)</li>		
+			<li>
+				<a href="category.php?cat_id=<?php echo $row['category_id']; ?>">
+					<?php echo $row['name']; ?>	
+				</a>
+				 (<?php echo $row['total']; ?>)</li>		
 		<?php } ?>
 		</ul>
 	</section>
