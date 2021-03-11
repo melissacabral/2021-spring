@@ -1,12 +1,12 @@
 TODO
 ====
-* Add Search page
+
 
 * Add Register form and parse new user accounts
 * Add Login and parse
 * Add login aurthentication to certain features (commenting, new post etc)
 
-* fix the missing user images with a default profile_pic
+* fix any blank user images with a default profile_pic
 
 * Challenge: Build profile template to show posts from any user - profile.php?user_id=x
 
@@ -27,6 +27,8 @@ DONE
 * write custom functions to count comments, improve the appearance of dates
 * Build category template to show posts in any category - category.php?cat_id=x
 
-
-
 * Build and parse the comment form on single.php
+
+* build the search form
+* build the search results page
+* add pagination to "flip" through the results
