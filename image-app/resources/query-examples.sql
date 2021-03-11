@@ -63,3 +63,11 @@ VALUES
 ('Tim Gomez', 'timgomez@example.com', 'password', 0, ''),
 ('Pat Wallace', 'patwallace@example.com', 'password', 0, ''),
 ('Kathryn Howell', 'kathryn@example.com', 'password', 0, '')
+
+#search for the keyword "lorem" in published posts
+SELECT post_id, title, body, is_published
+FROM posts
+WHERE ( title LIKE '%lorem%'
+OR body LIKE '%lorem%'
+OR image LIKE '%lorem%' )
+AND is_published = 1

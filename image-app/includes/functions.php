@@ -56,6 +56,24 @@ function display_feedback( $feedback = '', $feedback_class = 'error', $errors = 
 	}//endif feedback exists
 }
 
+/**
+ * displays sql query information including the computed parameters.
+ * Silent unless DEBUG MODE is set to 1 in config.php
+ * @param [type] $[name] [<description>]
+ */
+
+function debug_statement($sth){
+    if( DEBUG_MODE ){
+        echo '<pre>';
+    
+        $info =  debug_backtrace();
+        echo '<b>Debugger ran from ' . $info[0]['file'] . ' on line ' . $info[0]['line'] . '</b><br><br>';
+
+        $sth->debugDumpParams();
+        echo '</pre>';
+    }
+}
+
 
 
 
