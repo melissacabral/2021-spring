@@ -11,7 +11,7 @@ if( isset($_POST['did_register']) ){
 	$email 		= filter_var( $_POST['email'], 		FILTER_SANITIZE_EMAIL );
 	$password 	= filter_var( $_POST['password'], 	FILTER_SANITIZE_STRING );
 	//sanitize a checkbox boolean
-	if( $_POST['policy'] == 1 ){
+	if( isset( $_POST['policy'] ) AND $_POST['policy'] == 1 ){
 		$policy = 1;
 	}else{
 		$policy = 0;
