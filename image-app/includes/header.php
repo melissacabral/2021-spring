@@ -1,3 +1,6 @@
+<?php 
+$logged_in_user = check_login(); 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +25,19 @@
 			</form>
 
 			<ul class="menu">
+			<?php if( $logged_in_user ){ ?>
+				<li><a href="new-post.php">New Post</a></li>
+				<li>
+					<a href="profile.php">
+					<img src="<?php echo $logged_in_user['profile_pic']; ?>" width="25" height="25">
+					<?php echo $logged_in_user['username']; ?>	
+					</a>
+				</li>
+				<li><a href="login.php?action=logout">Log Out</a></li>
+			<?php }else{ ?>
 				<li><a href="register.php">Sign Up</a></li>
 				<li><a href="login.php">Log In</a></li>
+			<?php } ?>
 			</ul>
 		</nav>
 	</header>

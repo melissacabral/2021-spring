@@ -2,8 +2,7 @@ TODO
 ====
 
 
-* Add Register form and parse new user accounts
-* Add Login and parse
+
 * Add login aurthentication to certain features (commenting, new post etc)
 
 * fix any blank user images with a default profile_pic
@@ -32,3 +31,7 @@ DONE
 * build the search form
 * build the search results page
 * add pagination to "flip" through the results
+
+* Add Register form and parse new user accounts
+* Add Login and parse
+* Make logout action
