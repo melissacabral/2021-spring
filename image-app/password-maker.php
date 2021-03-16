@@ -1,4 +1,2 @@
 <?php 
-$desired_password = 'password';
-
-echo password_hash($desired_password, PASSWORD_DEFAULT);
+echo  sha1(bin2hex(random_bytes( 30 )));
