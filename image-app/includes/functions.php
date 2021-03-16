@@ -116,6 +116,30 @@ function check_login(){
     }
 }
 
+/**
+ * Display any post image at any known size (small, medium, large)
+ */
+function display_post_image( $post_id, $size = 'medium'){
+    global $DB;
+
+    $result = $DB->prepare('SELECT image, title 
+                            FROM posts
+                            WHERE post_id = ?
+                            LIMIT 1');
+    $result->execute( array($post_id) );
+
+    if( $result->rowCount() >= 1 ){
+        //display the image
+        $row = $result->fetch();
+        // uploads/sec7n6ei57sekftes_small.jpg
+        $url = 'uploads/' . $row['image'] . '_' . $size . '.jpg';
+        $alt = $row['title'];
+        echo "<img src='$url' alt='$alt' >";
+    }else{
+        return false;
+    }
+}
+
 
 
 

@@ -2,10 +2,23 @@
 require('config.php'); 
 require_once( FILE_ROOT . '/includes/functions.php' );
 require( FILE_ROOT . '/includes/header.php' );
+require( FILE_ROOT . '/includes/new-post-parse.php' );
 ?>
 <main class="content">
 	<?php if( $logged_in_user ){ ?>
-		<h2>New Post (secret page)</h2>
+		<div class="important-form">
+			<h2>New Post</h2>
+
+			<?php display_feedback($feedback, $feedback_class, $errors); ?>
+
+			<form action="new-post.php" method="post" enctype="multipart/form-data">
+				<label>Image File (jpg, gif, png allowed)</label>
+				<input type="file" name="uploadedfile" accept=".jpg, .gif, .png">
+
+				<input type="submit" value="Next: Post details &rarr;">
+				<input type="hidden" name="did_upload" value="1">
+			</form>
+		</div>
 	<?php } else { ?>
 		<h2>This page is password protected. Log in first.</h2>
 	<?php } ?>

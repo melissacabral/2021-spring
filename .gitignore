@@ -1,2 +1,5 @@
 day5-phpmailer/config.php
 image-app/config.php
+uploads/
+image-app/password-maker.php
+image-app/resources/hash-salt-demo.php
