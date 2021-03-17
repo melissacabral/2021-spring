@@ -3,7 +3,7 @@ TODO
 
 
 
-* Add login aurthentication to certain features (commenting, new post etc)
+* Add login authentication to commenting
 
 * fix any blank user images with a default profile_pic
 
@@ -35,3 +35,10 @@ DONE
 * Add Register form and parse new user accounts
 * Add Login and parse
 * Make logout action
+
+* Build the "new post" page and parser
+* automatically resize, crop and upload images into a folder on our server
+* store the post in the Database
+
+* build and parse step 2 - "Edit post" 
+* change all instances of post images with the display_post_image() function

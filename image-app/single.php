@@ -32,7 +32,7 @@ require( FILE_ROOT . '/includes/header.php' );
 		while( $row = $result->fetch() ){
 	 ?>
 		<div class="post">
-			<img src="<?php echo $row['image']; ?>">
+			<?php display_post_image( $post_id, 'large' ); ?>
 
 			<span class="author">
 				<img src="<?php echo $row['profile_pic']; ?>" width="50" height="50">

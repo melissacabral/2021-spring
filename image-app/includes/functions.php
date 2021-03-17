@@ -140,6 +140,41 @@ function display_post_image( $post_id, $size = 'medium'){
     }
 }
 
+/**
+ * Display a dropdown (select) of all categories
+ */
+function display_category_dropdown( $current_cat = 0 ){
+    global $DB;
+    $result = $DB->prepare('SELECT * FROM categories ORDER BY name ASC');
+    $result->execute();
+    if( $result->rowCount() >= 1 ){
+    ?>
+    <select name="category_id">
+        <?php while( $row = $result->fetch() ){ ?>
+            <option value="<?php echo $row['category_id']; ?>" 
+                <?php selected( $row['category_id'], $current_cat ); ?>>
+                <?php echo $row['name']; ?>
+            </option>
+        <?php } ?>
+    </select>
+    <?php
+    } //end if rows
+}
+
+/**
+ * custom functions for making dropdowns and checkboxes "stick"
+ */
+function selected( $thing1, $thing2 ){
+    if( $thing1 == $thing2 ){
+        echo 'selected';
+    }
+}
+function checked( $thing1, $thing2 ){
+    if( $thing1 == $thing2 ){
+        echo 'checked';
+    }
+}
+
 
 
 
