@@ -1,3 +1,4 @@
+<?php if( $logged_in_user ){ ?>
 <section class="comment-form" id="respond">
 	<h2>Leave a Comment</h2>
 
@@ -11,3 +12,7 @@
 		<input type="hidden" name="did_comment" value="1">		
 	</form>
 </section>
+<?php } //end if logged in
+else{
+	echo 'Please log in to leave a comment';
+} ?>

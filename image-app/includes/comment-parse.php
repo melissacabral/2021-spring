@@ -8,8 +8,7 @@ $errors = array();
 if(isset( $_POST['did_comment'] )){
 	//sanitize everything
 	$body = filter_var( $_POST['body'], FILTER_SANITIZE_STRING );
-	//TODO: replace this with the actual logged in user
-	$user_id = 1;
+	$user_id = $logged_in_user['user_id'];
 
 	//validate
 	$valid = true;

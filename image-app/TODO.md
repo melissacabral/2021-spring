@@ -3,11 +3,6 @@ TODO
 
 
 
-* Add login authentication to commenting
-
-* fix any blank user images with a default profile_pic
-
-* Challenge: Build profile template to show posts from any user - profile.php?user_id=x
 
 
 
@@ -42,3 +37,8 @@ DONE
 
 * build and parse step 2 - "Edit post" 
 * change all instances of post images with the display_post_image() function
+
+* Build profile template to show posts from any user - profile.php?user_id=x
+* fix any blank user images with a default profile_pic
+* Add login authentication to commenting
+* add the edit button to your own posts
