@@ -29,7 +29,7 @@ $logged_in_user = check_login();
 				<li><a href="new-post.php">New Post</a></li>
 				<li>
 					<a href="profile.php">
-					<img src="<?php echo $logged_in_user['profile_pic']; ?>" width="25" height="25">
+					<?php display_profile_pic( $logged_in_user['profile_pic'], 25 ); ?>
 					<?php echo $logged_in_user['username']; ?>	
 					</a>
 				</li>

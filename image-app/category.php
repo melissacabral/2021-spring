@@ -31,7 +31,7 @@ $category_id = filter_var( $_GET['cat_id'], FILTER_SANITIZE_NUMBER_INT );
 			</a>
 
 			<span class="author">
-				<img src="<?php echo $row['profile_pic']; ?>" width="50" height="50">
+				<?php display_profile_pic( $row['profile_pic'] ); ?>
 				<?php echo $row['username']; ?>
 			</span>
 

@@ -175,6 +175,20 @@ function checked( $thing1, $thing2 ){
     }
 }
 
+/**
+ * Display any user profile pic at any size in pixels
+ * show a default pic if the user doesn't have one
+ */
+function display_profile_pic( $profile_pic, $size = 50 ){
+    if($profile_pic == ''){
+        //default
+        $src = 'images/default-user.png';
+    }else{
+        $src = $profile_pic;
+    }
+    echo "<img src='$src' width='$size' height='$size' alt='User profile pic'>";
+}
+
 
 
 

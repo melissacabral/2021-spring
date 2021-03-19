@@ -1,7 +1,7 @@
 <aside class="sidebar">
 	
 	<?php //get up to 5 most recently joined users
-	$result = $DB->prepare('SELECT username, profile_pic 
+	$result = $DB->prepare('SELECT username, profile_pic, user_id 
 							FROM users
 							ORDER BY user_id DESC
 							LIMIT 5');
@@ -13,8 +13,10 @@
 		<ul>
 			<?php while( $row = $result->fetch() ){ ?>
 			<li class="user">
-				<img src="<?php echo $row['profile_pic']; ?>" alt="<?php echo $row['username']; ?>" width="50" height="50">
-				<?php echo $row['username']; ?>
+				<a href="profile.php?user_id=<?php echo $row['user_id'] ?>">
+					<?php display_profile_pic( $row['profile_pic'] ); ?>
+					<?php echo $row['username']; ?>
+				</a>
 			</li>
 			<?php } ?>
 		</ul>

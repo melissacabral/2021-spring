@@ -7,9 +7,9 @@ $post_id = filter_var( $_GET['post_id'], FILTER_SANITIZE_NUMBER_INT );
 if($post_id == ''){
 	$post_id = 0;
 }
-
-require( FILE_ROOT . '/includes/comment-parse.php');
 require( FILE_ROOT . '/includes/header.php' );
+require( FILE_ROOT . '/includes/comment-parse.php');
+
 //sanitize - get the ID of the post out of the URL - single.php?post_id=X
 
 
@@ -17,7 +17,7 @@ require( FILE_ROOT . '/includes/header.php' );
 <main class="content">
 	<?php //get the published post that we're trying to show,  (get author and category info as well)
 	$result = $DB->prepare('SELECT posts.image, posts.title, posts.body, posts.date, users.profile_pic, 
-								users.username, categories.name, posts.allow_comments
+								users.username, categories.name, posts.allow_comments, users.user_id
 							FROM posts, users, categories
 							WHERE posts.is_published = 1
 							AND users.user_id = posts.user_id
@@ -35,9 +35,15 @@ require( FILE_ROOT . '/includes/header.php' );
 			<?php display_post_image( $post_id, 'large' ); ?>
 
 			<span class="author">
-				<img src="<?php echo $row['profile_pic']; ?>" width="50" height="50">
+				<?php display_profile_pic( $row['profile_pic'] ); ?>
 				<?php echo $row['username']; ?>
 			</span>
+
+			<?php if( $row['user_id'] == $logged_in_user['user_id']){ ?>
+			<span class="edit">
+				<a class="button button-outline" href="edit-post.php?post_id=<?php echo $post_id; ?>">Edit</a>
+			</span>
+			<?php } ?>
 
 			<h2><?php echo $row['title']; ?></h2>
 			<p><?php echo $row['body']; ?></p>

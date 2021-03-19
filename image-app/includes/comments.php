@@ -14,7 +14,7 @@
 	?>
 	<div class="one-comment">
 		<div class="user">
-			<img src="<?php echo $row['profile_pic']; ?>" width="50" height="50">
+			<?php display_profile_pic( $row['profile_pic'] ); ?>
 			<?php echo $row['username']; ?>
 		</div>	
 
