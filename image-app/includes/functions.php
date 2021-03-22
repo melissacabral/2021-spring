@@ -189,6 +189,51 @@ function display_profile_pic( $profile_pic, $size = 50 ){
     echo "<img src='$src' width='$size' height='$size' alt='User profile pic'>";
 }
 
+/**
+ * Count the number of likes on any post
+ */
+
+function count_likes( $post_id = 0 ){
+    global $DB;
+    $result = $DB->prepare("SELECT COUNT(*) AS total_likes
+                            FROM likes
+                            WHERE post_id = ?");
+    $result->execute( array( $post_id ) );
+    if( $result->rowCount() >= 1 ){
+        $row = $result->fetch();
+        return $total = $row['total_likes'];
+    }
+}
+
+/**
+ * Like button interface 
+ */
+function like_interface( $post_id = 0, $user_id = 0 ){
+    global $DB;
+    //is the user logged in?
+    if( $user_id ){
+        //does the viewer like this post
+        $result = $DB->prepare("SELECT * FROM likes
+                                WHERE user_id = ?
+                                AND post_id = ?
+                                LIMIT 1");
+        $result->execute( array( $user_id, $post_id ) );
+        if( $result->rowCount() >= 1 ){
+            $class = 'you-like';
+        }else{
+            $class = 'not-liked';
+        }
+    }//end if user logged in
+    ?>
+    <span class="like-interface">
+        <span class="<?php echo $class; ?>">      
+          <span class="heart-button" data-postid="<?php echo $post_id; ?>">❤</span>
+          <?php echo count_likes( $post_id ); ?>
+        </span>
+    </span>
+    <?php
+}
+
 
 
 

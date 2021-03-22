@@ -36,6 +36,11 @@ require( FILE_ROOT . '/includes/header.php' );
 			<span class="category"><?php echo $row['name']; ?></span>
 			<span class="date"><?php nice_date( $row['date'] ); ?></span>
 			<span class="comment-count"><?php count_comments( $row['post_id'] ); ?></span>
+
+			<div class="likes">
+  				<?php like_interface( $row['post_id'], $logged_in_user['user_id'] ); ?>			  
+			</div><!-- end likes -->
+
 		</div>
 	<?php 
 		}  //end while

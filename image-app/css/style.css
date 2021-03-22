@@ -395,3 +395,22 @@ Breakpoints: check for browsers that support grid
 		
 	}
 }
+
+
+/* likes - default "not-liked" gray heart */
+.heart-button{
+	color:white;
+	text-shadow: -1px -1px 0 gray,
+				  1px  1px 0 gray,
+				 -1px  1px 0 gray,
+				  1px -1px 0 gray;
+
+	-webkit-text-stroke: 1px gray;
+	cursor:pointer;
+}
+/* like: red heart */
+.you-like .heart-button{
+	color:red;
+	text-shadow:none;
+	-webkit-text-stroke: 1px red;
+}
