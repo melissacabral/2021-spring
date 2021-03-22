@@ -42,3 +42,11 @@ DONE
 * fix any blank user images with a default profile_pic
 * Add login authentication to commenting
 * add the edit button to your own posts
+
+* Build the likes table  in our DB
+* write the HTML for the like button interface 
+* Add the CSS for the heart button 
+* Add the count_likes function
+* add the likes interface function 
+* add the JS AJAX call when the user clicks the heart button 
+* add the ajax handler PHP file to update the DB behind the scenes 

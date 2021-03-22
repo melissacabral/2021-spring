@@ -71,3 +71,14 @@ WHERE ( title LIKE '%lorem%'
 OR body LIKE '%lorem%'
 OR image LIKE '%lorem%' )
 AND is_published = 1
+
+#count the number of likes on post 17
+SELECT post_id, COUNT(*) as total_likes
+FROM likes
+WHERE post_id = 20
+
+#get all the usernames that like post 17
+SELECT users.username, likes.date
+FROM likes, users
+WHERE likes.user_id = users.user_id
+AND likes.post_id = 17
