@@ -36,6 +36,35 @@
 					  }
 		});
 	} );
+
+	//Following interaction
+	//if the viewer clicks "follow"
+	$('.follows').on('click', '.follow-button', function(){
+		//get the IDs of follower and followee
+		var followerId = <?php echo $logged_in_user['user_id'] ?>;
+		var followeeId = $(this).data('followee');
+
+		console.log(followerId, followeeId);
+
+		//grab the parent div of this button
+		var container = $(this).parents('.follows');
+
+		//set up the request
+		$.ajax({
+			method 	: 'GET',
+			url 	: 'ajax-handlers/follow.php',
+			data 	: {
+						'followerId' : followerId,
+						'followeeId' : followeeId
+					  },
+			success : function( response ){
+						container.html( response );
+					  },
+			error 	: function(){
+						console.log('ajax failed');
+					  }
+		});
+	});
 </script>
 <?php } ?>
 <!-- AJAX Additions -->

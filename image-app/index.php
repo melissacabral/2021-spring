@@ -54,5 +54,5 @@ require( FILE_ROOT . '/includes/header.php' );
 
 <?php 
 include( FILE_ROOT . '/includes/sidebar.php'); 
-include( FILE_ROOT . '/includes/footer-vanilla.php');
+include( FILE_ROOT . '/includes/footer.php');
 ?>

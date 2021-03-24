@@ -6,7 +6,6 @@ TODO
 
 
 
-
 DONE
 ====
 
@@ -50,3 +49,8 @@ DONE
 * add the likes interface function 
 * add the JS AJAX call when the user clicks the heart button 
 * add the ajax handler PHP file to update the DB behind the scenes 
+
+* add the follows table
+* build the interface for follow button and follow counts
+* write the script for the interaction
+

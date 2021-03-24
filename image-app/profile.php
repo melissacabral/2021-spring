@@ -39,6 +39,16 @@ if( isset($_GET['user_id']) ){
 				<p class="bio"><?php echo $row['bio']; ?></p>
 			</div>
 
+			<div class="follows grid">
+				<?php 
+				if($logged_in_user){
+					$viewer_id = $logged_in_user['user_id'];
+				}else{
+					$viewer_id = 0;
+				}
+				follows_interface( $user_id, $viewer_id ); ?>
+			</div>
+
 			<!-- first post, if it exists -->
 			<?php if( $row['post_id'] ){ ?>
 			<div class="post">
